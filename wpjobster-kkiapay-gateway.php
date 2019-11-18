@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 /**
  * Required minimums
  */
-define('WPJOBSTER_SAMPLE_MIN_PHP_VER', '5.4.0');
+define('WPJOBSTER_KKIAPAY_MIN_PHP_VER', '5.4.0');
 
 
 class WPJobster_Kkiapay_Loader
@@ -100,23 +100,6 @@ class WPJobster_Kkiapay_Loader
 		}
 
 		add_action('wp_enqueue_scripts', array($this, 'inject_kkiapay_script'));
-		$public = get_option('wpjobster_kkiapay_public');
-		$private = get_option('wpjobster_kkiapay_private');
-		$secret = get_option('wpjobster_kkiapay_secret');
-		$mode = get_option('wpjobster_kkiapay_enablesandbox');
-		// update_option('wpjobster_kkiapay_enablesandbox', trim($_POST['wpjobster_kkiapay_enablesandbox']));
-		// update_option('wpjobster_kkiapay_id',            trim($_POST['wpjobster_kkiapay_id']));
-		// update_option('wpjobster_kkiapay_public',           trim($_POST['wpjobster_kkiapay_public']));
-		// update_option('wpjobster_kkiapay_private',           trim($_POST['wpjobster_kkiapay_private']));
-		// update_option('wpjobster_kkiapay_secret',           trim($_POST['wpjobster_kkiapay_secret']));
-
-
-		// echo "<script id='debug'>	
-		// 	 { public:"$public" }
-		// 	 { secret:"$secret" }
-		// 	 { privé:"$private" }
-		// 	 { mode:"$mode"}
-		// 	</script>";
 	}
 
 	function inject_kkiapay_script()
@@ -214,7 +197,7 @@ class WPJobster_Kkiapay_Loader
 			update_option('wpjobster_kkiapay_success_page',  trim($_POST['wpjobster_kkiapay_success_page']));
 			update_option('wpjobster_kkiapay_failure_page',  trim($_POST['wpjobster_kkiapay_failure_page']));
 
-			echo '<div class="updated fade"><p>' . __('Settings saved!', 'wpjobster-sample') . '</p></div>';
+			echo '<div class="updated fade"><p>' . __('Settings saved!', 'wpjobster-kkiapay') . '</p></div>';
 		}
 	}
 
@@ -231,21 +214,21 @@ class WPJobster_Kkiapay_Loader
 		?>
 		<div id="tabs<?php echo $tab_id ?>">
 			<form method="post" action="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=payment-methods&active_tab=tabs<?php echo $tab_id; ?>">
-				<table width="100%" class="wpj-admin-table">
+				<table width="100%" class="sitemile-table">
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(); ?></td>
-						<td valign="top"><?php _e('Kkiapay Gateway', 'wpjobster-kkiapay'); ?></td>
+						<td style="border-bottom: none !important;" valign=top width="22"><?php wpjobster_theme_bullet(); ?></td>
+						<td style="border-bottom: none !important;" valign="top"><?php _e('Kkiapay Gateway', 'wpjobster-kkiapay'); ?></td>
 					</tr>
 
 					<tr>
-						<?php // _enable and _button_caption are mandatory 
+						<?php // _enable and _button_caption are mandatory
 								?>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Enable/Disable Sample payment gateway', 'wpjobster-kkiapay')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Activer Kkiapay', 'wpjobster-kkiapay')); ?></td>
 						<td width="200"><?php _e('Activer:', 'wpjobster-kkiapay'); ?></td>
 						<td><?php echo wpjobster_get_option_drop_down($arr, 'wpjobster_' . $this->unique_slug . '_enable', 'no'); ?></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Enable/Disable Sample test mode.', 'wpjobster-kkiapay')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Mettre Kkiapay en mode sandbox', 'wpjobster-kkiapay')); ?></td>
 						<td width="200"><?php _e('Mode Test:', 'wpjobster-kkiapay'); ?></td>
 						<td><?php echo wpjobster_get_option_drop_down($arr, 'wpjobster_' . $this->unique_slug . '_enablesandbox', 'no'); ?></td>
 					</tr>
@@ -254,44 +237,44 @@ class WPJobster_Kkiapay_Loader
 
 
 					<tr>
-						<?php // _enable and _button_caption are mandatory 
+						<?php // _enable and _button_caption are mandatory
 								?>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Put the Sample button caption you want user to see on purchase page', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Text par defaut du button de paiement', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Texte du button de paiement:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_<?php echo $this->unique_slug; ?>_button_caption" value="<?php echo get_option('wpjobster_' . $this->unique_slug . '_button_caption'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Merchant ID', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé public lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé publique:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_public" value="<?php echo get_option('wpjobster_kkiapay_public'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Merchant ID', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé public lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé publique Test:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_public_test" value="<?php echo get_option('wpjobster_kkiapay_public_test'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Key', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé privé lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé privé:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_private" value="<?php echo get_option('wpjobster_kkiapay_private'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Key', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé privé lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé privé Test:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_private_test" value="<?php echo get_option('wpjobster_kkiapay_private_test'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Key', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé secrete lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé secrete:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_secret" value="<?php echo get_option('wpjobster_kkiapay_secret'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Key', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé secrete lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé secrete Test:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_secret_test" value="<?php echo get_option('wpjobster_kkiapay_secret_test'); ?>" /></td>
 					</tr>
 					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Your Sample Key', 'wpjobster-sample')); ?></td>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Definissez la couleur du widget', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Couleur du widget:', 'wpjobster-kkiapay'); ?></td>
 						<td><input type="text" size="45" name="wpjobster_kkiapay_theme" value="<?php echo get_option('wpjobster_kkiapay_theme'); ?>" /></td>
 					</tr>
@@ -327,12 +310,6 @@ class WPJobster_Kkiapay_Loader
 				$key = get_option('wpjobster_kkiapay_public_test');
 			}
 
-			// var_dump($kkiapay_payment_url);
-			// var_dump($key);
-
-
-			// $key = get_option('wpjobster_kkiapay_public');
-
 			$credentials = array(
 				'key'                 => $key,
 				'sandbox' 			  => $wpjobster_kkiapay_enablesandbox != 'no',
@@ -356,37 +333,12 @@ class WPJobster_Kkiapay_Loader
 			$all_data['key']                = $credentials['key'];
 			$all_data['kkiapay_payment_url'] = $credentials['kkiapay_payment_url']; // The URL where all the data will be posted that is the gateway endpoint.
 
-			// $common_details usually will have following array keys
-			/* Array(
-			[order_id]                                 => 999             // order id from the wpjobster database
-			[pid]                                      => 123             // product id
-			[post]                                     => WP_Post Object  // post id for job_purchase payment type
-			[job_title]                                => 'Job Title'     // product title
-			[title]                                    => 'Job Title'     // product title
-			[uid]                                      => 1               // buyer id
-			[current_user]                             => WP_User Object  // buyer object
-			[currency]                                 => 'USD'           // default currency
-			[selected]                                 => 'EUR'           // selected currency
-			[price]                                    => 1000            // basic product price in default currency
-			[wpjobster_job_price]                      => 1000            // basic product price in default currency
-			[wpjobster_job_buyer_processing_fees]      => 10              // payment processing fee amount in default currency
-			[wpjobster_job_tax]                        => 10              // payment tax amount in default currency
-			[wpjobster_final_payable_amount_original]  => 1020            // final price including all taxes in default currency
-			[wpjobster_final_payable_amount]           => 950             // final price including all taxes in selected currency
-		) */
 
 			$uid                            = $common_details['uid'];
 			$wpjobster_final_payable_amount = $common_details['wpjobster_final_payable_amount'];
 			$currency                       = $common_details['currency'];
 			$order_id                       = $common_details['order_id'];
 			$wpjobster_kkiapay_enablesandbox = get_option('wpjobster_kkiapay_enablesandbox') == 'no' ? 'false' : 'true';
-			// $key = get_option('wpjobster_kkiapay_public');
-			if ($wpjobster_kkiapay_enablesandbox === 'false') {
-				$key = get_option('wpjobster_kkiapay_public');
-			} else {
-				$key = get_option('wpjobster_kkiapay_public_test');
-			}
-
 
 			// user() is a helper function which calls the appropriate function
 			// between get_userdata() and get_user_meta() depending on what info is needed
@@ -416,14 +368,14 @@ class WPJobster_Kkiapay_Loader
 		<script>
 			window.addEventListener('DOMContentLoaded', function() {
 				openKkiapayWidget({
-					key: "<?= $key ?>",
+					key: "<?= $all_data['key'] ?>",
 					sandbox: "<?= $wpjobster_kkiapay_enablesandbox ?>",
 					amount: <?= $all_data['amount']; ?>,
 					theme: "<?= $theme ?>",
 					data: {
 						orderId: <?= $order_id; ?>
 					},
-					callback: "<?= $website_url ?>"
+					callback: "<?= $all_data['success_url'] ?>"
 				})
 
 				addSuccessListener(response => {
@@ -432,18 +384,9 @@ class WPJobster_Kkiapay_Loader
 					const url = "<?= $all_data['success_url'] . '&transaction_id=' ?>"
 
 					const full_url = url + `${response.transactionId}`
-					fetch(full_url)
-						.then((response) => {
-							console.log(response)
-						})
-						.then(data => {
-							console.log(data) // Prints result from `response.json()` in getRequest
-						})
-						.catch(error => console.error(error))
 
-
-
-				});
+					window.location.href = full_url
+				})
 			})
 		</script>
 <?php
@@ -470,7 +413,6 @@ class WPJobster_Kkiapay_Loader
 		]);
 
 		$result = 'failed';
-		// var_dump($response);
 
 		if (is_wp_error($response)) {
 			$error_message = $response->get_error_message();
@@ -478,8 +420,6 @@ class WPJobster_Kkiapay_Loader
 		} else {
 			$result = json_decode($response['body']);
 		}
-
-		// var_dump($result);
 
 		return $result;
 	}
@@ -501,21 +441,15 @@ class WPJobster_Kkiapay_Loader
 
 		$kkiapay_response = $this->verify_transaction($transaction_id);
 
-
-
 		if ($kkiapay_response->status == 'SUCCESS') {
-			$payment_details = "success action returned"; // any info you may find useful for debug
-			// die();
-			// do_action(
-			// 	"wpjobster_" . $payment_type . "_payment_success",
-			// 	$kkiapay_response->state->orderId,
-			// 	$this->unique_slug,
-			// 	$payment_details,
-			// 	$kkiapay_response
-			// );
-			wpjobster_mark_job_prchase_completed($kkiapay_response->state->orderId, 'completed', $kkiapay_response, $payment_details);
-			wp_redirect(bloginfo('url'));
-			// die();
+			$payment_details = "ID transaction Kkiapay " . $transaction_id; // any info you may find useful for debug
+			do_action(
+				"wpjobster_" . $payment_type . "_payment_success",
+				$kkiapay_response->state->orderId,
+				$this->unique_slug,
+				$payment_details,
+				maybe_serialize($kkiapay_response)
+			);
 		} else {
 			$payment_details = "Failed action returned"; // any info you may find useful for debug
 			do_action(
@@ -523,7 +457,7 @@ class WPJobster_Kkiapay_Loader
 				$kkiapay_response->state->orderId,
 				$this->unique_slug,
 				$payment_details,
-				$kkiapay_response
+				maybe_serialize($kkiapay_response)
 			);
 		}
 	}
@@ -599,13 +533,13 @@ class WPJobster_Kkiapay_Loader
 	 */
 	static function get_environment_warning($during_activation = false)
 	{
-		if (version_compare(phpversion(), WPJOBSTER_SAMPLE_MIN_PHP_VER, '<')) {
+		if (version_compare(phpversion(), WPJOBSTER_KKIAPAY_MIN_PHP_VER, '<')) {
 			if ($during_activation) {
 				$message = __('The plugin could not be activated. The minimum PHP version required for this plugin is %1$s. You are running %2$s.', 'wpjobster-kkiapay');
 			} else {
 				$message = __('The Kkiapay Powered by wpjobster plugin has been deactivated. The minimum PHP version required for this plugin is %1$s. You are running %2$s.', 'wpjobster-kkiapay');
 			}
-			return sprintf($message, WPJOBSTER_SAMPLE_MIN_PHP_VER, phpversion());
+			return sprintf($message, WPJOBSTER_KKIAPAY_MIN_PHP_VER, phpversion());
 		}
 		return false;
 	}
