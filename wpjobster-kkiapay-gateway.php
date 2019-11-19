@@ -361,6 +361,7 @@ class WPJobster_Kkiapay_Loader
 			$all_data['order_id']     = $order_id;
 			$theme = get_option('wpjobster_kkiapay_theme');
 			$website_url = get_bloginfo('url');
+			$fullname = $all_data['firstname'].' '.$all_data['lastname'];
 
 			$loading_text = __('Loading...', 'wpjobster-kkiapay');
 
@@ -373,6 +374,8 @@ class WPJobster_Kkiapay_Loader
 					sandbox: "<?= $wpjobster_kkiapay_enablesandbox ?>",
 					amount: <?= $all_data['amount']; ?>,
 					theme: "<?= $theme ?>",
+					name: "<?= $fullname ?>",
+					phone: "<?= $all_data['phone']  ?>",
 					data: {
 						orderId: <?= $order_id; ?>
 					},
