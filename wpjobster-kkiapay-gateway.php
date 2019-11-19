@@ -246,32 +246,33 @@ class WPJobster_Kkiapay_Loader
 					<tr>
 						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé public lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé publique:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_public" value="<?php echo get_option('wpjobster_kkiapay_public'); ?>" /></td>
-					</tr>
-					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé public lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
-						<td><?php _e('Clé publique Test:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_public_test" value="<?php echo get_option('wpjobster_kkiapay_public_test'); ?>" /></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_public" value="<?php echo get_option('wpjobster_kkiapay_public'); ?>" /></td>
 					</tr>
 					<tr>
 						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé privé lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé privé:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_private" value="<?php echo get_option('wpjobster_kkiapay_private'); ?>" /></td>
-					</tr>
-					<tr>
-						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé privé lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
-						<td><?php _e('Clé privé Test:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_private_test" value="<?php echo get_option('wpjobster_kkiapay_private_test'); ?>" /></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_private" value="<?php echo get_option('wpjobster_kkiapay_private'); ?>" /></td>
 					</tr>
 					<tr>
 						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé secrete lorsque vous ete en Live', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé secrete:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_secret" value="<?php echo get_option('wpjobster_kkiapay_secret'); ?>" /></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_secret" value="<?php echo get_option('wpjobster_kkiapay_secret'); ?>" /></td>
+					</tr>
+					<tr>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé public lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
+						<td><?php _e('Clé publique Test:', 'wpjobster-kkiapay'); ?></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_public_test" value="<?php echo get_option('wpjobster_kkiapay_public_test'); ?>" /></td>
+					</tr>
+
+					<tr>
+						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé privé lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
+						<td><?php _e('Clé privé Test:', 'wpjobster-kkiapay'); ?></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_private_test" value="<?php echo get_option('wpjobster_kkiapay_private_test'); ?>" /></td>
 					</tr>
 					<tr>
 						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Votre clé secrete lorsque vous ete en Sandbox', 'wpjobster-kkiapay')); ?></td>
 						<td><?php _e('Clé secrete Test:', 'wpjobster-kkiapay'); ?></td>
-						<td><input type="text" size="45" name="wpjobster_kkiapay_secret_test" value="<?php echo get_option('wpjobster_kkiapay_secret_test'); ?>" /></td>
+						<td><input type="password" size="45" name="wpjobster_kkiapay_secret_test" value="<?php echo get_option('wpjobster_kkiapay_secret_test'); ?>" /></td>
 					</tr>
 					<tr>
 						<td valign=top width="22"><?php wpjobster_theme_bullet(__('Definissez la couleur du widget', 'wpjobster-kkiapay')); ?></td>
